@@ -5,13 +5,14 @@ import { redirect } from "next/navigation";
 
 export async function checkAuthStatus() {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const sessionCookie = cookieStore.get("__session")?.value;
 
     if (!sessionCookie) {
       return { isAuthenticated: false };
     }
 
+    // @ts-ignore - Nous savons que ces variables existent dans l'environnement
     const auth = getAuth(adminApp);
     const decodedClaims = await auth.verifySessionCookie(sessionCookie);
     const user = await auth.getUser(decodedClaims.uid);
@@ -20,7 +21,7 @@ export async function checkAuthStatus() {
       isAuthenticated: true,
       emailVerified: user.emailVerified,
     };
-  } catch (error) {
+  } catch {
     return { isAuthenticated: false };
   }
 }

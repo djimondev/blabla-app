@@ -47,7 +47,7 @@ export const EmailVerificationForm = () => {
           return prev - 1;
         });
       }, 1000);
-    } catch (error) {
+    } catch {
       toast.error(t.auth.errors.verificationEmailError);
     } finally {
       setIsLoading(false);

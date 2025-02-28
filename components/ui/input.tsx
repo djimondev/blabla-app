@@ -3,6 +3,8 @@
 import { cn } from "@/lib/utils";
 import * as React from "react";
 
+// Nous étendons les attributs HTML natifs sans ajouter de propriétés supplémentaires
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {}
 

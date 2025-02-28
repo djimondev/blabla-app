@@ -35,7 +35,7 @@ export const LoginForm = () => {
 
     try {
       await signIn(email, password);
-    } catch (error) {
+    } catch {
       toast.error(t.auth.errors.invalidCredentials);
     } finally {
       setIsLoading(false);
@@ -47,7 +47,7 @@ export const LoginForm = () => {
 
     try {
       await signInWithGoogle();
-    } catch (error) {
+    } catch {
       toast.error(t.auth.errors.googleError);
     } finally {
       setIsLoading(false);

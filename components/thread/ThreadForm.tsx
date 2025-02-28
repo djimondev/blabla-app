@@ -69,7 +69,7 @@ export const ThreadForm = () => {
 
     try {
       // Créer la nouvelle discussion
-      const newThread = await threadService.create({
+      await threadService.create({
         name: name.trim(),
         categoryId,
         authorId: user.uid,

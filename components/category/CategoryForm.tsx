@@ -21,12 +21,12 @@ export const CategoryForm = () => {
     e.preventDefault();
 
     if (!name.trim()) {
-      setError("Le nom de la catégorie est requis");
+      setError(t.categories.errors.nameRequired);
       return;
     }
 
     if (!user) {
-      setError("Vous devez être connecté pour créer une catégorie");
+      setError(t.categories.errors.loginRequired);
       return;
     }
 

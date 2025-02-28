@@ -103,14 +103,15 @@ export const ThreadMessages = ({ threadId }: { threadId: string }) => {
   };
 
   // Formater la date et l'heure
-  const formatDate = (timestamp: any) => {
+  const formatDate = (timestamp: { toDate: () => Date } | Date) => {
+    const date = "toDate" in timestamp ? timestamp.toDate() : timestamp;
     return new Intl.DateTimeFormat("fr-FR", {
       day: "numeric",
       month: "short",
       year: "numeric",
       hour: "2-digit",
       minute: "2-digit",
-    }).format(timestamp.toDate());
+    }).format(date);
   };
 
   // Obtenir les initiales d'un utilisateur

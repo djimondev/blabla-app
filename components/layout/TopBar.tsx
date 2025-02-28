@@ -40,7 +40,8 @@ export const TopBar = ({ className }: TopBarProps) => {
   // Obtenez les initiales de l'utilisateur à partir de son email
   const getUserInitials = (email: string | null | undefined) => {
     if (!email) return "??";
-    return email.substring(0, 2).toUpperCase();
+    const parts = email.split("@");
+    return parts[0].substring(0, 2).toUpperCase();
   };
 
   return (
@@ -62,7 +63,9 @@ export const TopBar = ({ className }: TopBarProps) => {
             <Menu className="h-5 w-5" />
           </Button>
         )}
-        {/* <span className="text-xl font-bold text-primary">BlaBla</span> */}
+        <span className="text-xl font-bold text-primary">
+          {t.common.appName}
+        </span>
       </div>
       <div className="flex items-center space-x-4">
         {user && (
